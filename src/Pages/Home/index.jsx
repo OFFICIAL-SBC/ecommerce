@@ -2,6 +2,7 @@ import useApiConsumption from '../../hooks/useApiConsumption';
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import CardSkeleton from '../../Components/CardSkeleton';
+import ProductDetail from '../../Components/ProductDetail';
 
 function Home() {
 
@@ -29,6 +30,7 @@ function Home() {
                     })
                 } 
             </div>
+            <ProductDetail />
         </Layout>
     )
 }
