@@ -28,8 +28,17 @@ function ShoppingCartProvider({ children }) {
     }
 
     //Product Detail - Show Product
-
     const [productToShow, setProductToShow] = useState({});
+
+    //Shopping Cart - Add products to cart
+    const [cartProducts, setCartProducts] = useState([]);
+
+    const addNewProductToCart = (product) =>{
+        const newProducts = [...cartProducts];
+        newProducts.push(product);
+        console.log('PRODUCTS IN CART: ', newProducts);
+        setCartProducts(newProducts);
+    }
 
 
 
@@ -43,7 +52,9 @@ function ShoppingCartProvider({ children }) {
                 closeProductDetail,
                 isProductDetailOpen,
                 productToShow,
-                setProductToShow
+                setProductToShow,
+                cartProducts,
+                addNewProductToCart
             }
         }>
             {children}
