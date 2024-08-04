@@ -8,10 +8,14 @@ const Card = (data) =>{
         increment,
         openProductDetail, 
         setProductToShow,
-        addNewProductToCart
+        addNewProductToCart,
+        openCheckoutSideMenu,
+        closeProductDetail,
+        closeCheckoutSideMenu
     } = useContext(ShoppingCartContext);
 
     const showProduct = (productDetail) =>{
+        closeCheckoutSideMenu();
         openProductDetail();
         setProductToShow(productDetail);
     }
@@ -27,7 +31,9 @@ const Card = (data) =>{
                         (event)=>{
                             event.stopPropagation(); //Avoids the event to propagate to the parent element
                             increment();
-                            addNewProductToCart(data.data);
+                            addNewProductToCart({...data.data, quantity: 1});
+                            openCheckoutSideMenu();
+                            closeProductDetail();
                         }}>
                         <PlusIcon className="w-6 h-6 text-black"/>
                     </div>

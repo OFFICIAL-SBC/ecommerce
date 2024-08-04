@@ -8,7 +8,7 @@ const ShoppingCartContext = createContext();
 function ShoppingCartProvider({ children }) {
 
 
-    //Shopping Cart Counter
+    // ! Shopping Cart Counter
     const [count, setCount] = useState(0);
     const increment = () =>{
         setCount(count + 1);
@@ -18,8 +18,9 @@ function ShoppingCartProvider({ children }) {
         setCount(count - 1);
     }
 
-    //Product Detail Open/Close
+    // ! Product Detail Open/Close
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+
     const openProductDetail = () =>{
         setIsProductDetailOpen(true);
     }   
@@ -27,10 +28,10 @@ function ShoppingCartProvider({ children }) {
         setIsProductDetailOpen(false);
     }
 
-    //Product Detail - Show Product
+    // ! Product Detail - Show Product
     const [productToShow, setProductToShow] = useState({});
 
-    //Shopping Cart - Add products to cart
+    // ! Shopping Cart - Add products to cart
     const [cartProducts, setCartProducts] = useState([]);
 
     const addNewProductToCart = (product) =>{
@@ -40,6 +41,31 @@ function ShoppingCartProvider({ children }) {
         setCartProducts(newProducts);
     }
 
+    // ! Shopping Cart - Increment/decrement the quantity of a product
+    const incrementProductQuantity = (id) => {
+        const newProducts = [...cartProducts];
+        const index = newProducts.findIndex(product => product.id === id);
+        newProducts[index].quantity++;
+        setCartProducts(newProducts);
+    }
+
+    const decrementProductQuantity = (id) => {
+        const newProducts = [...cartProducts];
+        const index = newProducts.findIndex(product => product.id === id);
+        newProducts[index].quantity--;
+        setCartProducts(newProducts);
+    }
+
+
+    //Checkout side Menu - Open/Close
+    const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+    
+    const openCheckoutSideMenu = () =>{
+        setIsCheckoutSideMenuOpen(true);
+    }   
+    const closeCheckoutSideMenu = () =>{
+        setIsCheckoutSideMenuOpen(false);
+    }
 
 
     return (
@@ -54,7 +80,12 @@ function ShoppingCartProvider({ children }) {
                 productToShow,
                 setProductToShow,
                 cartProducts,
-                addNewProductToCart
+                addNewProductToCart,
+                isCheckoutSideMenuOpen,
+                openCheckoutSideMenu,
+                closeCheckoutSideMenu,
+                incrementProductQuantity,
+                decrementProductQuantity
             }
         }>
             {children}
