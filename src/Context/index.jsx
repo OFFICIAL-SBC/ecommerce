@@ -57,7 +57,7 @@ function ShoppingCartProvider({ children }) {
     }
 
 
-    //Checkout side Menu - Open/Close
+    // ! Checkout side Menu - Open/Close
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
     
     const openCheckoutSideMenu = () =>{
@@ -65,6 +65,15 @@ function ShoppingCartProvider({ children }) {
     }   
     const closeCheckoutSideMenu = () =>{
         setIsCheckoutSideMenuOpen(false);
+    }
+
+    // ! Checkout side Menu - Delete product from cart
+
+    const deleteProductFromCart = (id) =>{
+        const newPorducts = [...cartProducts];
+        const index = newPorducts.findIndex(product => product.id === id);
+        newPorducts.splice(index, 1);
+        setCartProducts(newPorducts);
     }
 
 
@@ -85,7 +94,8 @@ function ShoppingCartProvider({ children }) {
                 openCheckoutSideMenu,
                 closeCheckoutSideMenu,
                 incrementProductQuantity,
-                decrementProductQuantity
+                decrementProductQuantity,
+                deleteProductFromCart
             }
         }>
             {children}
