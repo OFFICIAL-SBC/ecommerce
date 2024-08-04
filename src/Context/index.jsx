@@ -73,8 +73,18 @@ function ShoppingCartProvider({ children }) {
         const newPorducts = [...cartProducts];
         const index = newPorducts.findIndex(product => product.id === id);
         newPorducts.splice(index, 1);
+        decrement();
         setCartProducts(newPorducts);
     }
+
+    const emptyProductCart = () => {
+        setCartProducts([]);
+        setCount(0);
+    }
+
+
+    // ! Chechout side Menu - Order
+    const [order,setOrder] = useState([]);
 
 
     return (
@@ -95,7 +105,10 @@ function ShoppingCartProvider({ children }) {
                 closeCheckoutSideMenu,
                 incrementProductQuantity,
                 decrementProductQuantity,
-                deleteProductFromCart
+                deleteProductFromCart,
+                emptyProductCart,
+                order,
+                setOrder
             }
         }>
             {children}
