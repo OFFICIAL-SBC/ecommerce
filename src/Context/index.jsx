@@ -41,22 +41,6 @@ function ShoppingCartProvider({ children }) {
         setCartProducts(newProducts);
     }
 
-    // ! Shopping Cart - Increment/decrement the quantity of a product
-    const incrementProductQuantity = (id) => {
-        const newProducts = [...cartProducts];
-        const index = newProducts.findIndex(product => product.id === id);
-        newProducts[index].quantity++;
-        setCartProducts(newProducts);
-    }
-
-    const decrementProductQuantity = (id) => {
-        const newProducts = [...cartProducts];
-        const index = newProducts.findIndex(product => product.id === id);
-        newProducts[index].quantity--;
-        setCartProducts(newProducts);
-    }
-
-
     // ! Checkout side Menu - Open/Close
     const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
     
@@ -86,6 +70,8 @@ function ShoppingCartProvider({ children }) {
     // ! Chechout side Menu - Order
     const [order,setOrder] = useState([]);
 
+    
+
 
     return (
         <ShoppingCartContext.Provider value={
@@ -99,12 +85,11 @@ function ShoppingCartProvider({ children }) {
                 productToShow,
                 setProductToShow,
                 cartProducts,
+                setCartProducts,
                 addNewProductToCart,
                 isCheckoutSideMenuOpen,
                 openCheckoutSideMenu,
                 closeCheckoutSideMenu,
-                incrementProductQuantity,
-                decrementProductQuantity,
                 deleteProductFromCart,
                 emptyProductCart,
                 order,
