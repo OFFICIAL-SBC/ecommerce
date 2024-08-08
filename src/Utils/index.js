@@ -10,6 +10,8 @@ export const totalPrice = (products) => {
 }
 
 /**
+ * 
+ *  *This function gets the current date and return it formatted
  * @param None
  * @returns {String} Formatted date
  */
@@ -20,5 +22,5 @@ export function getFormattedDate() {
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const day = String(date.getDate()).padStart(2, '0');
     
-    return `${year}/${month}/${day}`;
+    return `${day}/${month}/${year}`;
 }
