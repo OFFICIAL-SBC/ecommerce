@@ -24,6 +24,7 @@ const ProductDetail = () =>{
                         event.preventDefault();
                         event.stopPropagation();
                         context.addNewProductToCart({...context.productToShow, quantity: 1});
+                        context.increment();
                     }} className='text-white'>Add to the cart</button>
                     <ShoppingCartIcon className='h-6 w-6 text-white'/>
             </div>
