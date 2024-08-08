@@ -8,6 +8,8 @@ import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 function MyOrder() {
 
     const context = useContext(ShoppingCartContext);
+    const currentPath = window.location.pathname;
+    
 
     return (
         <Layout>

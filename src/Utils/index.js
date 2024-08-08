@@ -6,7 +6,7 @@
  */
 
 export const totalPrice = (products) => {
-    return products.reduce((acc, product) => acc + product.price * product.quantity, 0).toFixed(2);
+    return Math.round(products.reduce((acc, product) => acc + product.price * product.quantity, 0)*100)/100;
 }
 
 /**
@@ -23,4 +23,15 @@ export function getFormattedDate() {
     const day = String(date.getDate()).padStart(2, '0');
     
     return `${day}/${month}/${year}`;
+}
+
+
+/**
+ * @param {String} The string you want to slice
+ * @returns {String} the wanted substring
+ */
+
+export function getSubstringFromLink(string){
+    const index = string.lastIndexOf('/') - string.length + 1;
+    return string.slice(index);
 }
