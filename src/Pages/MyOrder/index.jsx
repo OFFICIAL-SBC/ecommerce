@@ -4,12 +4,13 @@ import OrderCard from "../../Components/OrderCard";
 import { ShoppingCartContext } from "../../Context";
 import { Link } from "react-router-dom";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
+import { getSubstringFromLink } from "../../Utils";
 
 function MyOrder() {
 
     const context = useContext(ShoppingCartContext);
     const currentPath = window.location.pathname;
-    
+    const index = getSubstringFromLink(currentPath)==='last' ? context.order.length - 1: +getSubstringFromLink(currentPath);
 
     return (
         <Layout>
@@ -41,7 +42,7 @@ function MyOrder() {
             </div>
             <div className="flex flex-col w-2/5">
                 {
-                    context.order.slice(-1)[0]?.products.map((product, index)=>{
+                    context.order[index]?.products.map((product, index)=>{
                         return(
                             <OrderCard 
                                 key={index} 
