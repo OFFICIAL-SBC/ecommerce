@@ -10,10 +10,10 @@ function MyOrders() {
 
     return (
         <Layout>
-            <div className="flex justify-center items-center w-80 relative">
-                <h1>My orders</h1>
+            <div className="flex justify-center items-center w-80 relative mb-4">
+                <h1 className="font-medium text-xl">My orders</h1>
             </div>
-            <div className="w-3/5">
+            <div className="flex flex-col items-center w-3/5">
                 {
                     context.order.map((order,index)=>{
                         return(
