@@ -70,6 +70,10 @@ function ShoppingCartProvider({ children }) {
     // ! Chechout side Menu - Order
     const [order,setOrder] = useState([]);
 
+
+    // ! Get products by title
+    const [searchByTitle, setSearchByTitle] = useState('');
+    console.log('searchByTitle',searchByTitle);
     
 
 
@@ -93,7 +97,9 @@ function ShoppingCartProvider({ children }) {
                 deleteProductFromCart,
                 emptyProductCart,
                 order,
-                setOrder
+                setOrder,
+                searchByTitle,
+                setSearchByTitle
             }
         }>
             {children}

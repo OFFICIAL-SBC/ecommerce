@@ -3,13 +3,26 @@ import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import CardSkeleton from '../../Components/CardSkeleton';
 import ProductDetail from '../../Components/ProductDetail';
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../../Context';
 
 function Home() {
 
+    const context = useContext(ShoppingCartContext);
     const { data, loading, error } = useApiConsumption('https://fakestoreapi.com/products');
+    
+
     return (
         <Layout>
-            Home Page
+            <div className="flex justify-center items-center w-80 relative mb-4">
+                <h1 className="font-medium text-xl">Home Page</h1>
+            </div>
+            <input 
+                type="text" 
+                placeholder='Search for a product' 
+                className='rounded-lg border-black border-2 w-80 p-4 mb-4'
+                onChange={(event)=> context.setSearchByTitle(event.target.value)}
+            />
             {loading && (
                 <div className='grid gap-3 grid-cols-4 w-full max-w-screen-lg'>
                     <CardSkeleton />
@@ -25,7 +38,7 @@ function Home() {
             {error && <p>Error: {error}</p>}
             <div className='grid gap-3 grid-cols-4 w-full max-w-screen-lg'>
                 {
-                    data && data.map((item)=>{
+                    data && data.filter(item => item.title.toLowerCase().includes(context.searchByTitle.toLowerCase())).map((item)=>{
                         return <Card key={item.id} data={item}/>   
                     })
                 } 
