@@ -24,15 +24,15 @@ function MyOrder() {
             <div  className="flex flex-col items-center w-2/5 mt-4">
                 <p className="flex justify-between w-full rounded-2xl p-4 bg-black/40">
                     <span className="font-medium text-l">Date: </span>
-                    <span className="font-normal text-l ">{context.order.slice(-1)[0]?.date}</span>
+                    <span className="font-normal text-l ">{context.order[index]?.date}</span>
                 </p>
                 <p className="flex justify-between w-full rounded-2xl p-4 bg-black/40 m-2">
                     <span className="font-medium text-l">Number of products: </span>
-                    <span className="font-normal text-l">{context.order.slice(-1)[0]?.totalProducts}</span>
+                    <span className="font-normal text-l">{context.order[index]?.totalProducts}</span>
                 </p>
                 <p className="flex justify-between w-full rounded-2xl p-4 bg-black/40 m-2">
                     <span className="font-medium text-l">Total price: </span>
-                    <span className="font-normal text-l">${context.order.slice(-1)[0]?.totalPrice}</span>
+                    <span className="font-normal text-l">${context.order[index]?.totalPrice}</span>
                 </p>
             </div>
             <div className="grid grid-cols-12 w-2/5 mb-6 border-b-2 border-black pb-2">

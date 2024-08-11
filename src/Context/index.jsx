@@ -73,7 +73,9 @@ function ShoppingCartProvider({ children }) {
 
     // ! Get products by title
     const [searchByTitle, setSearchByTitle] = useState('');
-    console.log('searchByTitle',searchByTitle);
+
+    // ! Get products by category
+    const [searchByCategory, setSearchByCategory] = useState('');
     
 
 
@@ -99,7 +101,9 @@ function ShoppingCartProvider({ children }) {
                 order,
                 setOrder,
                 searchByTitle,
-                setSearchByTitle
+                setSearchByTitle,
+                searchByCategory,
+                setSearchByCategory
             }
         }>
             {children}
