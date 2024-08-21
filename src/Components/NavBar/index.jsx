@@ -1,40 +1,38 @@
 import { Fragment, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartContext } from "../../Context";
+import  ShoppingCart  from '../ShoppingCart';
 
 const NavBar = () => {
 
     const activeStyle = "underline underline-offset-4";
-    const { count,setSearchByCategory, setSignOut, signOut } = useContext(ShoppingCartContext);
+    const context = useContext(ShoppingCartContext);
     const HandleSignOut = () => {
         localStorage.setItem('sign-out',JSON.stringify(true));
-        setSignOut(true);
+        context.setSignOut(true);
     }
 
     //Sign Out
     const signOutLocalStorage = localStorage.getItem('sign-out');
     const parsedSignOut = JSON.parse(signOutLocalStorage);
-    const isUserSignOut = signOut || parsedSignOut;
+    const isUserSignOut = context.signOut || parsedSignOut;
+
+    // Account
+    const account = localStorage.getItem('account');
+    const parsedAccount = JSON.parse(account);
+
+    //Has an account?
+    const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0: true;
+    const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0: true;
+    const hasUserAnAccount = !noAccountInLocalState || !noAccountInLocalStorage;
+
 
     const renderView = () => {
-        if(isUserSignOut){
-            return(
-                <li>
-                    <NavLink
-                        to="/sign-in"
-                        className={({isActive}) => isActive ? activeStyle: null}
-                        onClick={()=>HandleSignOut()}
-                    >
-                        Sign Out
-                    </NavLink>
-                </li>
-            );
-        }else{
+        if(hasUserAnAccount && !isUserSignOut){
             return(
                 <Fragment>
                     <li className="text-black/60">
-                        sebastian
+                        {parsedAccount?.email}
                     </li>
                     <li>
                         <NavLink 
@@ -58,10 +56,21 @@ const NavBar = () => {
                             </NavLink>
                     </li>
                     <li className="flex items-center">
-                        <ShoppingBagIcon className="h-6 w-6 text-black"/>
-                        <div>{count}</div>
+                        <ShoppingCart />
                     </li>
                 </Fragment>
+            );
+        }else{
+            return(
+                <li>
+                    <NavLink
+                        to="/sign-in"
+                        className={({isActive}) => isActive ? activeStyle: null}
+                        onClick={()=>HandleSignOut()}
+                    >
+                        Sign Out
+                    </NavLink>
+                </li>
             );
         }
     }
@@ -71,8 +80,8 @@ const NavBar = () => {
             <ul className="flex justify-center items-center gap-3">
                 <li className="font-semibold text-lg">
                     <NavLink 
-                        to='/'
-                        onClick={()=> setSearchByCategory('')}
+                        to={`${isUserSignOut ? '/sign-in':'/'}`}
+                        onClick={()=> context.setSearchByCategory('')}
                     >
                         GymHill
                     </NavLink>
@@ -81,28 +90,28 @@ const NavBar = () => {
                     <NavLink 
                         to='/'
                         className={({isActive})=> isActive ? activeStyle : null}
-                        onClick={()=> setSearchByCategory('')}
+                        onClick={()=> context.setSearchByCategory('')}
                     >All</NavLink>
                 </li>
                 <li>
                     <NavLink 
                         to='/clothes'
                         className={({isActive})=> isActive ? activeStyle : null}
-                        onClick={()=> setSearchByCategory('clothing')}
+                        onClick={()=> context.setSearchByCategory('clothing')}
                     >Clothes</NavLink>
                 </li>
                 <li>
                     <NavLink 
                         to='/electronics'
                         className={({isActive})=> isActive ? activeStyle : null}
-                        onClick={()=> setSearchByCategory('electronics')}    
+                        onClick={()=> context.setSearchByCategory('electronics')}    
                     >Electronics</NavLink>
                 </li>
                 <li>
                     <NavLink 
                         to='/jewelry'
                         className={({isActive})=> isActive ? activeStyle : null}
-                        onClick={()=> setSearchByCategory('jewelery')}    
+                        onClick={()=> context.setSearchByCategory('jewelery')}    
                     >Jewelry</NavLink>    
                 </li>
             </ul>

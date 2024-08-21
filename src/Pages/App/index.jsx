@@ -1,5 +1,6 @@
-import  {useRoutes, BrowserRouter} from 'react-router-dom';
-import { ShoppingCartProvider } from '../../Context';
+import  {useRoutes, BrowserRouter, Navigate} from 'react-router-dom';
+import { ShoppingCartContext, ShoppingCartProvider, initializeLocalStorage } from '../../Context';
+import { useContext } from 'react';
 import Home from '../Home';
 import MyAccount from '../MyAccount';
 import MyOrder from '../MyOrder';
@@ -12,11 +13,27 @@ import './App.css';
 
 const AppRoutes = () => {
 
+  const context = useContext(ShoppingCartContext);
+
+  //Sign Out
+  const signOutLocalStorage = localStorage.getItem('sign-out');
+  const parsedSignOut = JSON.parse(signOutLocalStorage);
+  const isUserSignOut = context.signOut || parsedSignOut;
+
+  // Account
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
+
+  //Has an account?
+  const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0: true;
+  const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0: true;
+  const hasUserAnAccount = !noAccountInLocalState || !noAccountInLocalStorage;
+
   let routes = useRoutes([
-    { path: '/', element: <Home /> }, 
-    { path: '/clothes', element: <Home /> }, 
-    { path: '/electronics', element: <Home /> }, 
-    { path: '/jewelry', element: <Home /> }, 
+    { path: '/', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'}/> }, 
+    { path: '/clothes', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'}/> }, 
+    { path: '/electronics', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'}/> }, 
+    { path: '/jewelry', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'}/> }, 
     { path: '/my-account', element: <MyAccount /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
@@ -31,6 +48,8 @@ const AppRoutes = () => {
 };
 
 function App() {
+
+  initializeLocalStorage();
 
   return (
     <ShoppingCartProvider>

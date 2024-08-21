@@ -20,6 +20,7 @@ export const initializeLocalStorage = () => {
 
     if(!signOutInLocalStorage){
         localStorage.setItem('sign-out',JSON.stringify(false));
+        parsedSignOut=false;
     }else{
         parsedSignOut = JSON.parse(signOutInLocalStorage);
     }
@@ -64,7 +65,6 @@ function ShoppingCartProvider({ children }) {
     const addNewProductToCart = (product) =>{
         const newProducts = [...cartProducts];
         newProducts.push(product);
-        console.log('PRODUCTS IN CART: ', newProducts);
         setCartProducts(newProducts);
     }
 

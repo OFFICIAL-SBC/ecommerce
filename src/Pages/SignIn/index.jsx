@@ -21,7 +21,7 @@ function SignIn() {
         const stringifiedSignOut = JSON.stringify(false);
         localStorage.setItem('sign-out',stringifiedSignOut);
         context.setSignOut(false);
-
+        context.setSearchByCategory('');
         return <Navigate replace to={'/'}/>
     }
 
@@ -56,6 +56,7 @@ function SignIn() {
                 <Link to="/">
                     <button className="bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mt-4 mb-2"
                             disabled={!hasUserAnAccount}
+                            onClick={() => handleSignIn() }
                     >
                         Log in
                     </button>
