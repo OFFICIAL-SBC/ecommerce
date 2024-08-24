@@ -35,7 +35,6 @@ function SignIn() {
             password: formData.get('password')
         }
 
-        console.log(data);
         const stringifiedAccount = JSON.stringify(data);
         localStorage.setItem('account',stringifiedAccount);
         context.setAccount(data);
@@ -44,15 +43,27 @@ function SignIn() {
 
     const renderLogin = () => {
         return(
-            <div className="flex flex-col w-80">
-                <p>
-                    <span className="font-light text-sm">Email: </span>
-                    <span>{parsedAccount?.email}</span>
-                </p>
-                <p>
-                    <span className="font-light text-sm">Password: </span>
-                    <span>{parsedAccount?.password}</span>
-                </p>
+            <form ref={form} action="" className="flex flex-col gap-4 w-80">
+                <div className="flex flex-col gap-1">
+                    <label htmlFor="userEmail" className="font-light text-sm">User Email:</label>
+                    <input
+                        type="email"
+                        id="userEmail"
+                        name="userEmail"
+                        defaultValue={parsedAccount?.email}
+                        placeholder="Email"
+                        className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"/>
+                </div>
+                <div className="flex flex-col gap-1">
+                    <label htmlFor="userPassword" className="font-light text-sm">Password:</label>
+                    <input
+                        type="password"
+                        id="userPassword"
+                        name="userPassword"
+                        defaultValue={parsedAccount?.password}
+                        placeholder="*******" 
+                        className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"/>
+                </div>
                 <Link to="/">
                     <button className="bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mt-4 mb-2"
                             disabled={!hasUserAnAccount}
@@ -72,7 +83,7 @@ function SignIn() {
                         Sign Up
 
                 </button>
-        </div>
+            </form>
         );
     };
 
@@ -92,7 +103,7 @@ function SignIn() {
                 <div className="flex flex-col gap-1">
                     <label htmlFor="email" className="font-light text-sm">Your email:</label>
                     <input
-                        type="text"
+                        type="email"
                         id="email"
                         name="email"
                         defaultValue={parsedAccount?.email}
@@ -102,7 +113,7 @@ function SignIn() {
                 <div className="flex flex-col gap-1">
                     <label htmlFor="password" className="font-light text-sm">Your password: </label>
                     <input
-                        type="text"
+                        type="password"
                         id="password"
                         name="password"
                         defaultValue={parsedAccount?.password}

@@ -5,7 +5,7 @@ import { ShoppingCartContext } from "../../Context";
 function MyAccount() {
 
     const context = useContext(ShoppingCartContext);
-    const [ view,setView ] = useState('user-info');
+    const [ view, setView ] = useState('user-info');
     const account = localStorage.getItem('account');
     const parsedAccount = JSON.stringify(account);
     const form = useRef(null);
@@ -53,7 +53,7 @@ function MyAccount() {
                         id="name"
                         name="name"
                         defaultValue={parsedAccount.name}
-                        placeholder="Peter"
+                        placeholder="User's Name"
                         className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4'
                     />
                 </div>
@@ -64,7 +64,7 @@ function MyAccount() {
                         id="email"
                         name="email"
                         defaultValue={parsedAccount.email}
-                        placeholder="hi@helloworld.com"
+                        placeholder="email"
                         className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4'
                     />
                 </div>
@@ -75,7 +75,7 @@ function MyAccount() {
                         id="password"
                         name="password"
                         defaultValue={parsedAccount.password}
-                        placeholder="******"
+                        placeholder="password"
                         className='rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4'
                     />
                 </div>

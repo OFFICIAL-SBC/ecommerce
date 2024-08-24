@@ -24,7 +24,7 @@ function ShoppingCartProvider({ children }) {
     const [account, setAccount] = useState({});
 
     // ! Sign Out
-    const [signOut, setSignOut] = useState(false);
+    const [signOut, setSignOut] = useState(true);
 
 
     // ! Shopping Cart Counter
