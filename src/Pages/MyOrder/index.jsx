@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Layout from "../../Components/Layout"
-import OrderCard from "../../Components/OrderCard";
+import Layout from "../../Layout"
+import OrderCard from "../../Features/Store/OrderCard";
 import { ShoppingCartContext } from "../../Context";
 import { Link } from "react-router-dom";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";

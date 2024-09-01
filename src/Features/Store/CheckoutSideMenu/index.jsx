@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import './styles.css';
 import { XMarkIcon} from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
-import { ShoppingCartContext } from '../../Context';
+import { ShoppingCartContext } from '../../../Context';
 import OrderCard from '../OrderCard';
-import { totalPrice, getFormattedDate } from '../../Utils';
+import { totalPrice, getFormattedDate } from '../../../Utils';
 
 const CheckoutSideMenu = () => {
 

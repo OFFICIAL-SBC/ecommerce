@@ -1,5 +1,5 @@
 import { useContext, useState, useRef } from "react";
-import Layout from "../../Components/Layout"
+import Layout from "../../Layout"
 import { ShoppingCartContext } from "../../Context";
 
 function MyAccount() {

@@ -1,7 +1,7 @@
 import { Fragment, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
-import  ShoppingCart  from '../ShoppingCart';
+import  ShoppingCart  from '../../Features/Store/ShoppingCart';
 
 const NavBar = () => {
 

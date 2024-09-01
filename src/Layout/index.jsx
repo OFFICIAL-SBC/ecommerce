@@ -10,7 +10,7 @@ const Layout = ({ children }) =>{
 };
 
 
-Layout.propTypes  ={
+Layout.propTypes  = {
     children: PropTypes.node.isRequired
 }
 

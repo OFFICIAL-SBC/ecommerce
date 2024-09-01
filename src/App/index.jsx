@@ -1,14 +1,16 @@
 import  {useRoutes, BrowserRouter, Navigate} from 'react-router-dom';
-import { ShoppingCartContext, ShoppingCartProvider, initializeLocalStorage } from '../../Context';
+import { ShoppingCartContext, ShoppingCartProvider, initializeLocalStorage } from '../Context';
 import { useContext } from 'react';
-import Home from '../Home';
-import MyAccount from '../MyAccount';
-import MyOrder from '../MyOrder';
-import MyOrders from '../MyOrders';
-import NotFound from '../NotFound';
-import SignIn from '../SignIn';
-import { NavBar } from '../../Components/NavBar';
-import CheckoutSideMenu from '../../Components/CheckoutSideMenu';
+import Home from '../Pages/Home';
+import MyAccount from '../Pages/MyAccount';
+import MyOrder from '../Pages/MyOrder';
+import MyOrders from '../Pages/MyOrders';
+import NotFound from '../Pages/NotFound';
+import SignIn from '../Pages/SignIn';
+import { NavBar } from '../Layout/NavBar';
+import CheckoutSideMenu from '../Features/Store/CheckoutSideMenu';
+import { SideNavigationBar, SideNavigationBarItem } from '../Layout/SideNavigationBar';
+import {BuildingStorefrontIcon,PresentationChartLineIcon, ChatBubbleLeftRightIcon} from "@heroicons/react/24/solid";
 import './App.css';
 
 const AppRoutes = () => {
@@ -57,6 +59,11 @@ function App() {
         <NavBar />
         <AppRoutes />
         <CheckoutSideMenu />
+        <SideNavigationBar>
+          <SideNavigationBarItem icon = {<BuildingStorefrontIcon className='w-6 h-6'/>} text={"Store"} active = {true} />
+          <SideNavigationBarItem icon = {<PresentationChartLineIcon className='w-6 h-6'/>} text={"Statistics"} />
+          <SideNavigationBarItem icon = {<ChatBubbleLeftRightIcon className='w-6 h-6'/> } text={"Hercules"} alert = {true} />
+        </SideNavigationBar>
       </BrowserRouter>
     </ShoppingCartProvider>
   )

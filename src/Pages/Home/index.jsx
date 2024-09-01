@@ -1,8 +1,8 @@
 import useApiConsumption from '../../hooks/useApiConsumption';
-import Layout from "../../Components/Layout"
-import Card from "../../Components/Card"
-import CardSkeleton from '../../Components/CardSkeleton';
-import ProductDetail from '../../Components/ProductDetail';
+import Layout from "../../Layout"
+import Card from "../../Features/Store/Card"
+import CardSkeleton from '../../Features/Store/CardSkeleton';
+import ProductDetail from '../../Features/Store/ProductDetail';
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../Context';
 
