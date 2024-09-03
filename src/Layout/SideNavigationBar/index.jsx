@@ -32,11 +32,11 @@ const SideNavigationBar = ( { children } ) => {
                     <figure className="h-10 w-10 rounded-md">
                         <img src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true" alt="" />
                     </figure>
-                    <div className={`flex justify-between items-center w-52 ml-3 overflow-hidden transition-all ${expanded ? "w-52  ml-3":"w-0"}`}>
+                    <div className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52  ml-3":"w-0"}`}>
                         <h4 className="font-semibold">sebas bonilla</h4>
                         <span className="text-xs text-gray-600">sebas@hotmail.com</span>
                     </div>
-                    <EllipsisVerticalIcon className="w-6 h-6"/>
+                    <EllipsisVerticalIcon className={`${expanded ? "w-6 h-6 ml-3":"w-0 h-0"}`}/>
                 </div>
             </nav>
         </aside>
@@ -50,7 +50,7 @@ const SideNavigationBarItem = ({icon, text, active,alert}) => {
     return(
         <li className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${active? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-700": "hover:bg-indigo-50 text-gray-600"}`}>
             {icon}
-            <span className={`w-6 h-6 overflow-hidden ${expanded ? "w-52 ml-3":"w-0"} `}>{text}</span>
+            <span className={`overflow-hidden ${expanded ? "w-52 ml-3":"w-0"} `}>{text}</span>
             {alert && (
                 <div className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${expanded? "":"top-2"}`}></div>
             )}
