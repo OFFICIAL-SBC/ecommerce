@@ -27,11 +27,11 @@ export function getFormattedDate() {
 
 
 /**
- * @param {String} The string you want to slice
- * @returns {String} the wanted substring
+ * @param {String} The URL you want to slice
+ * @returns {String} The portion of th URL that goes after the last / (backslash)
  */
 
 export function getSubstringFromLink(string){
-    const index = string.lastIndexOf('/') - string.length + 1;
+    const index = string.lastIndexOf('/') + 1;
     return string.slice(index);
 }

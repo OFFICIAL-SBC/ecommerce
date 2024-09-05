@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 function MyOrders() {
     const context = useContext(ShoppingCartContext);
-    console.log(context.order);
 
     return (
         <Layout>
@@ -19,7 +18,7 @@ function MyOrders() {
                         return(
                             <Link
                                 key={index}
-                                to={`/my-orders/${index}`}>
+                                to={`/store/my-orders/${index}`}>
                                 <OrdersCard 
                                     date={order.date}
                                     totalPrice = {order.totalPrice}

@@ -36,7 +36,7 @@ const NavBar = () => {
                     </li>
                     <li>
                         <NavLink 
-                            to='/my-orders'
+                            to='/store/my-orders'
                             className={({isActive})=> isActive ? activeStyle : null} 
                         > My Orders</NavLink>
                     </li>
@@ -79,7 +79,7 @@ const NavBar = () => {
             <ul className="flex justify-center items-center gap-3">
                 <li className="font-semibold text-lg">
                     <NavLink 
-                        to={`${isUserSignOut ? '/sign-in':'/'}`}
+                        to={`${isUserSignOut ? '/sign-in':'/store'}`}
                         onClick={()=> context.setSearchByCategory('')}
                     >
                         GymHill
@@ -87,28 +87,28 @@ const NavBar = () => {
                 </li>
                 <li>
                     <NavLink 
-                        to='/'
+                        to='/store'
                         className={({isActive})=> isActive ? activeStyle : null}
                         onClick={()=> context.setSearchByCategory('')}
                     >All</NavLink>
                 </li>
                 <li>
                     <NavLink 
-                        to='/clothes'
+                        to='/store/clothes'
                         className={({isActive})=> isActive ? activeStyle : null}
                         onClick={()=> context.setSearchByCategory('clothing')}
                     >Clothes</NavLink>
                 </li>
                 <li>
                     <NavLink 
-                        to='/electronics'
+                        to='/store/electronics'
                         className={({isActive})=> isActive ? activeStyle : null}
                         onClick={()=> context.setSearchByCategory('electronics')}    
                     >Electronics</NavLink>
                 </li>
                 <li>
                     <NavLink 
-                        to='/jewelry'
+                        to='/store/jewelry'
                         className={({isActive})=> isActive ? activeStyle : null}
                         onClick={()=> context.setSearchByCategory('jewelery')}    
                     >Jewelry</NavLink>    
