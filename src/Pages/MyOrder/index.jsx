@@ -13,7 +13,7 @@ function MyOrder() {
     const index = getSubstringFromLink(currentPath)==='last' ? context.order.length - 1: +getSubstringFromLink(currentPath);
 
     return (
-        <Layout>
+        <Layout css='flex flex-col items-center mt-10'>
             <div className="flex justify-center items-center w-2/5 relative  bg-black  rounded-lg p-3">
                 <Link to='/store/my-orders' className="absolute left-0">
                     <ChevronLeftIcon className="h-6 w-6 text-white cursor-pointer ml-4"/>

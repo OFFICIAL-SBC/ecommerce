@@ -93,7 +93,7 @@ function MyAccount() {
 
 
     return (
-        <Layout>
+        <Layout css='flex flex-col items-center mt-10'>
             <h1 className="font-medium text-xl text-center mb-6 w-86">My account</h1>
             {renderView()}
         </Layout>

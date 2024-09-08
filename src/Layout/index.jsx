@@ -1,9 +1,9 @@
 
 import PropTypes from 'prop-types';
 
-const Layout = ({ children }) =>{
+const Layout = ({ css ,children }) =>{
     return (
-        <div className="flex flex-col items-center mt-10">
+        <div className={css}>
             {children}
         </div>
     );
@@ -11,7 +11,8 @@ const Layout = ({ children }) =>{
 
 
 Layout.propTypes  = {
-    children: PropTypes.node.isRequired
+    children: PropTypes.node.isRequired,
+    css: PropTypes.string.isRequired
 }
 
 export default Layout;

@@ -3,7 +3,7 @@ import Layout from "../../Layout"
 function NotFound() {
 
     return (
-        <Layout>
+        <Layout css='flex flex-col items-center mt-10'>
             Not found
         </Layout>
     )

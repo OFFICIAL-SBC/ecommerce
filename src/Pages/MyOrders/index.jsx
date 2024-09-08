@@ -8,7 +8,7 @@ function MyOrders() {
     const context = useContext(ShoppingCartContext);
 
     return (
-        <Layout>
+        <Layout css='flex flex-col items-center mt-10'>
             <div className="flex justify-center items-center w-80 relative mb-4">
                 <h1 className="font-medium text-xl">My orders</h1>
             </div>
