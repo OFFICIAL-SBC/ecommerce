@@ -33,15 +33,13 @@ const CustomForm = forwardRef(
                 console.log(field.default);
                 return (
                     <CustomInput
-                    key={index}
-                    value={formValues[field.name]}
-                    type={field.type}
-                    inputName={field.name}
-                    textLabel={textLabelOptions[field.name]}
-                    styleDiv={`flex flex-col gap-1`}
-                    styleLabel={`font-light text-sm`}
-                    styleInput={`rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4`}
-                    handleChange={handleChange}
+                      key={index}
+                      value={formValues[field.name]}
+                      type={field.type}
+                      inputName={field.name}
+                      textLabel={textLabelOptions[field.name]}
+                      styleDiv={`flex flex-col gap-1`}
+                      handleChange={handleChange}
                     />
                 );
 
