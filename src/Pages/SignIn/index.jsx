@@ -3,6 +3,8 @@ import { Link, Navigate } from "react-router-dom";
 import { useContext, useState, useRef } from "react";
 import { ShoppingCartContext } from "../../Context";
 import { CustomForm } from "../../Components/CustomForm";
+import { CustomButton } from "../../Components/CustomButton";
+import { PAGE_NAME } from "../../Constants";
 
 function SignIn() {
     const context = useContext(ShoppingCartContext);
@@ -22,6 +24,7 @@ function SignIn() {
         ? Object.keys(context.account).length === 0
         : true;
     const hasUserAnAccount = !noAccountInLocalState || !noAccountInLocalStorage;
+    console.log(hasUserAnAccount);
     //!----------------------------------------------------------------------------------------------------
 
     const handleSignIn = () => {
@@ -48,6 +51,10 @@ function SignIn() {
         handleSignIn();
     };
 
+    const goToCreateUserView = ()=>{
+        setView("create-user")
+    }
+
     const fieldsFormLogin = [
         { name: "email", type: "email", default: parsedAccount?.email, placeholder:"Email"},
         { name: "password", type: "password", default: parsedAccount?.password, placeholder:"Password"},
@@ -67,29 +74,17 @@ function SignIn() {
             textButton={`Log In`}
             >
                 <Link to="/">
-                    <button
-                        className="bg-black disabled:bg-black/40 text-white w-full rounded-lg py-3 mt-4 mb-2"
-                        disabled={!hasUserAnAccount}
-                        onClick={() => handleSignIn()}
-                    >
-                        Log in
-                    </button>
+                    <CustomButton buttonText={"Log In"} onClick={handleSignIn}/>
                 </Link>
+                <CustomButton buttonText={"Sign Up"} onClick={goToCreateUserView}/>
                 <div className="text-center">
-                <a
-                    className="font-light text-xs underline underline-offset-4"
-                    href="/"
-                >
-                    Forgot my password
-                </a>
-                </div>
-                <button
-                className="border border-black disabled:bg-black/40 disabled:border-black/40 rounded-lg mt-6 py-3"
-                disabled={hasUserAnAccount}
-                onClick={() => setView("create-user")}
-                >
-                Sign Up
-                </button>     
+                    <a
+                        className="font-light text-xs underline underline-offset-4"
+                        href="/"
+                    >
+                        Forgot my password
+                    </a>
+                </div>   
             </CustomForm>
         ) : (
             <CustomForm
@@ -98,19 +93,14 @@ function SignIn() {
             ref={form}
             textButton={`Create account`}>
             <Link to="/">
-                <button
-                    className="bg-black text-white w-full rounded-lg py-3"
-                    onClick={() => createAccount()}
-                >
-                    Create account
-                </button>
+                <CustomButton buttonText={"Create User"} onClick={createAccount} />
             </Link>
             </CustomForm>
         );
 
     return (
         <Layout css="flex flex-col items-center mt-10">
-            <h1 className="font-medium text-xl text-center mb-6 w-80">Welcome</h1>
+            <h1 className="font-medium text-xl text-center mb-6 w-80">Welcome to {PAGE_NAME}</h1>
             {renderView()}
         </Layout>
     );

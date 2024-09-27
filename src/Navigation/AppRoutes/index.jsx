@@ -7,6 +7,7 @@ import MyOrder from '../../Pages/MyOrder';
 import MyOrders from '../../Pages/MyOrders';
 import SignIn from '../../Pages/SignIn';
 import NotFound from '../../Pages/NotFound';
+import { Tracker } from '../../Pages/Tracker';
 
 const AppRoutes = () => {
     const context = useContext(ShoppingCartContext);
@@ -36,6 +37,7 @@ const AppRoutes = () => {
         { path: '/store/my-orders', element: <MyOrders /> },
         { path: '/store/my-orders/last', element: <MyOrder /> },
         { path: '/store/my-orders/:id', element: <MyOrder /> },
+        { path: '/tracker', element: <Tracker /> },
         { path: '/sign-in', element: <SignIn /> },
         { path: '/*', element: <NotFound /> },
     ]);
